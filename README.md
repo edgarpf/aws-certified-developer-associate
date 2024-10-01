@@ -99,5 +99,25 @@
 *  If you terminate a container instance while it is in the STOPPED state, that container instance isn't automatically removed from the cluster. You will need to deregister your container instance in the STOPPED state by using the Amazon ECS console or AWS Command Line Interface. Once deregistered, the container instance will no longer appear as a resource in your Amazon ECS cluster.
 *  A Classic Load Balancer with HTTP or HTTPS listeners might route more traffic to higher-capacity instance types. This distribution aims to prevent lower-capacity instance types from having too many outstanding requests. It’s a best practice to use similar instance types and configurations to reduce the likelihood of capacity gaps and traffic imbalances.
 *  In a WebSocket API, the client and the server can both send messages to each other at any time. Backend servers can easily push data to connected users and devices, avoiding the need to implement complex polling mechanisms.
-*  To manage large Amazon Simple Queue Service (Amazon SQS) messages, you can use Amazon Simple Storage Service (Amazon S3) and the Amazon SQS Extended Client Library for Java.
-*  
+* To manage large Amazon Simple Queue Service (Amazon SQS) messages, you can use Amazon Simple Storage Service (Amazon S3) and the Amazon SQS Extended Client Library for Java.
+* To share information between stacks, export a stack's output values. Other stacks that are in the same AWS account and region can import the exported values.
+* Kinesis Agent is a stand-alone Java software application that offers an easy way to collect and send data to Kinesis Data Streams.
+* Downloading dependencies is a critical phase in the build process. These dependent files can range in size from a few KBs to multiple MBs. Because most of the dependent files do not change frequently between builds, you can noticeably reduce your build time by caching dependencies in S3.
+* Use decode-authorization-message to decode additional information about the authorization status of a request from an encoded message returned in response to an AWS request.
+* While using Redis with cluster mode enabled, you cannot manually promote any of the replica nodes to primary.
+* Amazon S3 will reject any requests made over HTTP when using SSE-C.
+* The cloudformation package command packages the local artifacts (local paths) that your AWS CloudFormation template references. The command will upload local artifacts, such as your source code for your AWS Lambda function.
+* The cloudformation deploy command deploys the specified AWS CloudFormation template by creating and then executing a changeset.
+* By default, the Scan operation processes data sequentially. Amazon DynamoDB returns data to the application in 1 MB increments, and an application performs additional Scan operations to retrieve the next 1 MB of data. The larger the table or index being scanned, the more time the Scan takes to complete. To address these issues, the Scan operation can logically divide a table or secondary index into multiple segments, with multiple application workers scanning the segments in parallel.
+* A client of your API can invalidate an existing cache entry and reload it from the integration endpoint for individual requests. The client must send a request that contains the Cache-Control: max-age=0 header.
+* The simplest way to set up connections to AWS CodeCommit repositories is to configure Git credentials for CodeCommit in the IAM console, and then use those credentials for HTTPS connections.
+* For SQS, the minimum message size is 1 byte (1 character). The maximum is 262,144 bytes (256 KB).
+* GSI (Global Secondary Index) is an index with a partition key and a sort key that can be different from those on the base table.
+* LSI stands for Local Secondary Index. Some applications only need to query data using the base table's primary key; however, there may be situations where an alternate sort key would be helpful. To give your application a choice of sort keys, you can create one or more local secondary indexes on a table and issue Query or Scan requests against these indexes.
+* One read capacity unit represents two eventually consistent reads per second, for an item up to 4 KB in size. So that means that for an item of 12KB in size, we need 3 RCU (12 KB / 4 KB) for two eventually consistent reads per second. As we need 16 eventually consistent reads per second, we need 3 * (16 / 2) = 24 RCU.
+* You can not specify publicly routable IP addresses to an ALB.
+* An ALB has three possible target types: Instance, IP and Lambda.
+* `x-amz-server-side-encryption': 'AES256'` to be encrypted using SSE-S3.
+* Repositories are automatically encrypted at rest.
+* 
+* 
