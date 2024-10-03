@@ -119,5 +119,51 @@
 * An ALB has three possible target types: Instance, IP and Lambda.
 * `x-amz-server-side-encryption': 'AES256'` to be encrypted using SSE-S3.
 * Repositories are automatically encrypted at rest.
-* 
-* 
+* You can have at most one EC2 instance per shard in Kinesis for the given application.
+* AWS STS Tokens that are created by using account credentials can range from 900 seconds (15 minutes) up to a maximum of 3,600 seconds (1 hour), with a default of 1 hour. 
+* There are two types of VPC endpoints: interface endpoints and gateway endpoints. An interface endpoint is an elastic network interface with a private IP address from the IP address range of your subnet that serves as an entry point for traffic destined to a supported service. A gateway endpoint is a gateway that you specify as a target for a route in your route table for traffic destined to a supported AWS service. The following AWS services are supported:
+  * Amazon S3
+  * DynamoDB
+* If you perform heavy write activity on the table, but a global secondary index on that table has insufficient write capacity, then the write activity on the table will be throttled. To avoid potential throttling, the provisioned write capacity for a global secondary index should be equal or greater than the write capacity of the base table since new updates will write to both the base table and global secondary index.
+* You can avoid hitting the limit by applying an application version lifecycle policy to your applications. A lifecycle policy tells Elastic Beanstalk to delete old application versions or to delete application versions when the total number of versions for an application exceeds a specified number.
+* If your AWS Elastic Beanstalk application performs operations or workflows that take a long time to complete, you can offload those tasks to a dedicated worker environment. Decoupling your web application front end from a process that performs blocking operations is a common way to ensure that your application stays responsive under load. For a worker environment, you need a cron.yaml file to define the cron jobs and do repetitive tasks.
+* A deployment package is a ZIP archive that contains your function code and dependencies. You need to create a deployment package if you use the Lambda API to manage functions, or if you need to include libraries and dependencies other than the AWS SDK. You can upload the package directly to Lambda, or you can use an Amazon S3 bucket, and then upload it to Lambda. If the deployment package is larger than 50 MB, you must use Amazon S3. This is the standard way of packaging Lambda functions.
+* When evaluating an IAM policy of an EC2 instance doing actions on S3, the least-privilege union of both the IAM policy of the EC2 instance and the bucket policy of the S3 bucket are taken into account.
+* If your workload is unpredictable, you can enable storage autoscaling for an Amazon RDS DB instance.
+* AWS_XRAY_DAEMON_ADDRESS is an environment variable can be used by AWS X-Ray SDK to ensure that the daemon is correctly discovered on ECS.
+* Annotations are simple key-value pairs that are indexed for use with filter expressions. Use annotations to record data that you want to use to group traces in the console, or when calling the GetTraceSummaries API. X-Ray indexes up to 50 annotations per trace.
+* S3 Select enables applications to retrieve only a subset of data from an object by using simple SQL expressions. By using S3 Select to retrieve only the data needed by your application, you can achieve drastic performance increases in many cases you can get as much as a 400% improvement.
+* The intrinsic function Fn::ImportValue returns the value of an output exported by another stack. You typically use this function to create cross-stack references.
+* The write-through strategy adds data or updates data in the cache whenever data is written to the database.
+* You can develop and test your serverless application locally, and then you can deploy your application by using the sam deploy command. The sam deploy command zips your application artifacts, uploads them to Amazon Simple Storage Service (Amazon S3), and deploys your application to the AWS Cloud. AWS SAM uses AWS CloudFormation as the underlying deployment mechanism.
+* The Load Balancer generates the HTTP 503: Service unavailable error when the target groups for the load balancer have no registered targets.
+* By allocating provisioned concurrency before an increase in invocations, you can ensure that all requests are served by initialized instances with low latency. Lambda functions configured with provisioned concurrency run with consistent start-up latency, making them ideal for building interactive mobile or web backends, latency-sensitive microservices, and synchronously invoked APIs.
+* Elastic Beanstalk uses Amazon Elastic Container Service (Amazon ECS) to coordinate container deployments to multi-container Docker environments.
+* The message deduplication ID is the token used for the deduplication of sent messages. If a message with a particular message deduplication ID is sent successfully, any messages sent with the same message deduplication ID are accepted successfully but aren't delivered during the 5-minute deduplication interval.
+* The versioning state applies to all (never some) of the objects in that bucket. The first time you enable a bucket for versioning, objects in it are thereafter always versioned and given a unique version ID.
+* To view all categories of instance metadata from within a running instance, use the following URI - http://169.254.169.254/latest/meta-data/. The IP address 169.254.169.254 is a link-local address and is valid only from the instance. All instance metadata is returned as text (HTTP content type text/plain).
+* For the given use-case, the company wants to manage the encryption keys via its custom application and let S3 manage the encryption, therefore you must use Server-Side Encryption with Customer-Provided Keys (SSE-C).
+* Amazon RDS automatically initiates a failover to the standby, in case primary database fails for any reason.
+* RDS applies OS updates by performing maintenance on the standby, then promoting the standby to primary and finally performing maintenance on the old primary, which becomes the new standby.
+* ECS_ENABLE_TASK_IAM_ROLE - This configuration item is used to enable IAM roles for tasks for containers with the bridge and default network modes.
+* You can use the AWS CodeBuild agent to test and debug builds on a local machine.
+* If the instance is already running, you can set DeleteOnTermination to False using the command line. It is not possible to update this attribute of a running instance from the AWS console.
+* CloudFront routes all incoming requests to the primary origin, even when a previous request failed over to the secondary origin.
+* CloudFront fails over to the secondary origin only when the HTTP method of the viewer request is GET, HEAD or OPTIONS.
+* A write capacity unit represents one write per second, for an item up to 1 KB in size.
+* Amazon EC2 Auto Scaling cannot add a volume to an existing instance if the existing volume is approaching capacity.
+* Amazon Elastic File System (EFS) Standard–IA storage class reduces storage costs for files that are not accessed every day. It does this without sacrificing the high availability, high durability, elasticity, and POSIX file system access that Amazon EFS provides.
+* After you send messages to a queue, you can receive and delete them. When you request messages from a queue, you can't specify which messages to retrieve. Instead, you specify the maximum number of messages (up to 10) that you want to retrieve.
+* Amazon S3 always returns the latest version of the object.
+* A Lambda authorizer is an API Gateway feature that uses a Lambda function to control access to your API. A Lambda authorizer is useful if you want to implement a custom authorization scheme that uses a bearer token authentication strategy such as OAuth or SAML, or that uses request parameters to determine the caller's identity.
+* The capacity limits of an Amazon Kinesis data stream are defined by the number of shards within the data stream. The limits can be exceeded by either data throughput or the number of PUT records. While the capacity limits are exceeded, the put data call will be rejected with a ProvisionedThroughputExceeded exception.
+* One Read Capacity Unit represents one strongly consistent read per second, or two eventually consistent reads per second, for an item up to 4 KB in size.
+* Amazon Kinesis Data Firehose is the easiest way to reliably load streaming data into data lakes, data stores, and analytics services.
+* If you delete a bucket and immediately list all buckets, the deleted bucket might still appear in the list.
+* Using the awslogs log driver you can configure the containers in your tasks to send log information to CloudWatch Logs. If you're using the Fargate launch type for your tasks, you need to add the required logConfiguration parameters to your task definition to turn on the awslogs log driver.
+* You can specify one or more deployment groups for a CodeDeploy application. The deployment group contains settings and configurations used during the deployment. Most deployment group settings depend on the compute platform used by your application. Some settings, such as rollbacks, triggers, and alarms can be configured for deployment groups for any compute platform.
+* If two writes are made to a single non-versioned object at the same time, it is possible that only a single event notification will be sent.
+* HTTP 503 indicates 'Service unavailable' error. This error in ALB is an indicator of the target groups for the load balancer having no registered targets.
+* A volume restored from an encrypted snapshot, or a copy of an encrypted snapshot is always encrypted.
+* Encryption by default is a Region-specific setting. If you enable it for a Region, you cannot disable it for individual volumes or snapshots in that Region.
+* AWS CloudTrail event logs for 'CreateVolume' aren't available for EBS volumes created during an Amazon EC2 launch.
